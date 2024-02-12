@@ -30,8 +30,7 @@ In our study, we consider the following cases of retrieval:
 
 To combine the results for Hybrid retrieval, Reciprocal Rank Fusion (RRF) was used.
 
-<img src="plots
-/ranker_pipeline.jpg" alt="Pipeline with Rankers" align="middle" width="700" height="230">
+<img src="plots/ranker_pipeline.jpg" alt="Pipeline with Rankers" align="middle" width="700" height="230">
 
 
 
