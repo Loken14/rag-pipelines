@@ -44,25 +44,23 @@ To combine the results for Hybrid retrieval, Reciprocal Rank Fusion (RRF) was us
 
 To run the retreival pipelines, you will need to clone this repository and install the required libraries.
 
+
 1. Install the `rag-pipelines` package:
 
 ```bash
-pip install git+https://github.com/avnlp/rag-pipelines.git@#egg=rag-pipelines
-```
-
-2. Clone the `rag-pipelines` repository
-```python 
 git clone https://github.com/avnlp/rag-pipelines
+cd rag-pipelines
+pip install -e .
 ```
 
-3. To add the data to an index in Pinecone using the INSTRUCTOR-XL model embedding model:
+2. To add the data to an index in Pinecone using the INSTRUCTOR-XL model embedding model:
 
 ```python 
 cd src/rag_pipelines/indexing_pipeline/fiqa
 python pinecone_instructor_index.py
 ```
 
-4. To run a specific pipeline you will have to go that file path and then run the file.
+3. To run a specific pipeline you will have to go that file path and then run the file.
 For example, running the dense retreival pipeline using the INSTRUCTOR-XL model
 
 ```python 
