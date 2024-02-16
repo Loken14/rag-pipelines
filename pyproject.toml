@@ -40,7 +40,7 @@ dependencies = [
   "pinecone-client==2.2.4",
   "pinecone-haystack==0.0.1",
   "beir",
-  "sentence-transformers"
+  "sentence-transformers==2.2.2"
 ]
 
 [project.urls]
