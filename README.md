@@ -4,9 +4,15 @@ Retrieval Augmented Generation (RAG) is a method for generating text using addit
 
 A RAG pipeline can be tuned in many ways to give more relevant answers. One important way is to improve the relevance of the retrieved context which is input to the LLM. This ensures that the generated answers are coherent and consistent with the context in the original documents.
 
+We have done a detailed analysis of RAG pipelines for Dense and Hybrid Retrieval. For dense retrieval the INSTRUCTOR-XL and all-mpnet-base-v2 models were used.
+The BM25 retrieval was used for sparse retrieval in the hybrid pipelines.
+
+<img src="plots/pipelines_taxonomy.png" alt="RAG Pipelines Taxonomy" align="middle" width="600" height="300">
+
+
 ## Performance Evaluation of Rankers and RRF Techniques for Retrieval Pipelines
 
-Paper: [Performance Evaluation of Rankers and RRF Techniques for Retrieval Pipelines](https://github.com/avnlp/rag-pipelines/blob/main/rankers_rrf.pdf)
+**Paper:** [Performance Evaluation of Rankers and RRF Techniques for Retrieval Pipelines](https://github.com/avnlp/rag-pipelines/blob/main/paper/rankers_rrf.pdf)
 
 In the intricate world of LFQA and RAG, making the most of the LLM’s context window is paramount. Any wasted space or repetitive content limits the depth and breadth of the answers we can extract and generate. It’s a delicate balancing act to lay out the content of the context window appropriately. 
 
@@ -23,21 +29,45 @@ The following rankers were used:
 In our study, we consider the following cases of retrieval:
 
 - Dense Retrieval
+
+<img src="plots/rankers_dense_pipeline.png" alt="Dense Pipeline with Rankers" align="middle" width="550" height="100">
+
+
 - Hybrid Retrieval
-- Dense + Rankers Retrieval
-- Hybrid + Rankers Retrieval
 
 To combine the results for Hybrid retrieval, Reciprocal Rank Fusion (RRF) was used.
 
-<img src="plots/ranker_pipeline.jpg" alt="Pipeline with Rankers" align="middle" width="700" height="230">
+<img src="plots/rankers_hybrid_pipeline.png" alt="Hybrid Pipeline with Rankers" align="middle" width="820" height="230">
 
 
+## Usage
 
-## Installation
+To run the retreival pipelines, you will need to clone this repository and install the required libraries.
 
-To install the `rag-pipelines`:
-```python 
+1. Install the `rag-pipelines` package:
+
+```bash
 pip install git+https://github.com/avnlp/rag-pipelines.git@#egg=rag-pipelines
+```
+
+2. Clone the `rag-pipelines` repository
+```python 
+git clone https://github.com/avnlp/rag-pipelines
+```
+
+3. To add the data to an index in Pinecone using the INSTRUCTOR-XL model embedding model:
+
+```python 
+cd src/rag_pipelines/indexing_pipeline/fiqa
+python pinecone_instructor_index.py
+```
+
+4. To run a specific pipeline you will have to go that file path and then run the file.
+For example, running the dense retreival pipeline using the INSTRUCTOR-XL model
+
+```python 
+cd src/rag_pipelines/rankers/instructor_xl/fiqa/
+python dense.py
 ```
 
 ## License
