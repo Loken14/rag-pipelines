@@ -53,7 +53,7 @@ cd rag-pipelines
 pip install -e .
 ```
 
-2. To add the data to an index in Pinecone using the INSTRUCTOR-XL model embedding model:
+2. To add the data to an index in Pinecone using the INSTRUCTOR-XL embedding model:
 
 ```python 
 cd src/rag_pipelines/indexing_pipeline/fiqa
@@ -61,7 +61,7 @@ python pinecone_instructor_index.py
 ```
 
 3. To run a specific pipeline you will have to go that file path and then run the file.
-For example, running the dense retreival pipeline using the INSTRUCTOR-XL model
+For example, running the dense retreival pipeline using the INSTRUCTOR-XL embedding model:
 
 ```python 
 cd src/rag_pipelines/rankers/instructor_xl/fiqa/
