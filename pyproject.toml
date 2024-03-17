@@ -42,6 +42,13 @@ dependencies = [
   "sentence-transformers",
 ]
 
+[project.optional-dependencies]
+llm_blender = [
+  "absl-py",
+  "LLM-Blender @ git+https://github.com/yuchenlin/LLM-Blender.git",
+]
+
+
 [project.urls]
 Documentation = "https://github.com/avnlp/rag-pipelines#readme"
 Issues = "https://github.com/avnlp/rag-pipelines/issues"
@@ -63,6 +70,21 @@ cov = ["test-cov", "cov-report"]
 
 [[tool.hatch.envs.all.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.test_llm_blender]
+dependencies = [
+  "absl-py",
+  "LLM-Blender @ git+https://github.com/yuchenlin/LLM-Blender.git",
+  "coverage[toml]>=6.5",
+  "coveralls",
+  "pytest",
+]
+
+[tool.hatch.envs.test_llm_blender.scripts]
+test = "pytest {args:tests/llm_blender}"
+test-cov = "coverage run -m pytest {args:tests/llm_blender}"
+cov-report = ["- coverage combine", "coverage xml"]
+cov = ["test-cov", "cov-report"]
 
 [tool.hatch.envs.lint]
 detached = true
