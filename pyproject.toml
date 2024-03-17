@@ -35,12 +35,11 @@ classifiers = [
 
 dependencies = [
   "typing_extensions",
-  "haystack-ai @ git+https://github.com/awinml/haystack.git@test_rrf#egg=haystack-ai",
-  "instructor-embedders-haystack==0.1.0",
-  "pinecone-client==2.2.4",
-  "pinecone-haystack==0.0.1",
+  "haystack-ai @ git+https://github.com/deepset-ai/haystack.git@main#egg=haystack-ai",
+  "instructor-embedders-haystack",
+  "pinecone-haystack",
   "beir",
-  "sentence-transformers==2.2.2",
+  "sentence-transformers",
 ]
 
 [project.optional-dependencies]
@@ -80,6 +79,7 @@ dependencies = [
   "coveralls",
   "pytest",
 ]
+
 [tool.hatch.envs.test_llm_blender.scripts]
 test = "pytest {args:tests/llm_blender}"
 test-cov = "coverage run -m pytest {args:tests/llm_blender}"
@@ -92,8 +92,8 @@ dependencies = ["black>=23.1.0", "mypy>=1.0.0", "ruff>=0.0.243"]
 
 [tool.hatch.envs.lint.scripts]
 typing = "mypy --install-types --non-interactive {args:src/rag_pipelines tests}"
-style = ["ruff {args:.}", "black --check --diff {args:.}"]
-fmt = ["black {args:.}", "ruff --fix {args:.}", "style"]
+style = ["ruff check {args:.}", "black --check --diff {args:.}"]
+fmt = ["black {args:.}", "ruff check --fix {args:.}", "style"]
 all = ["fmt", "typing"]
 
 [tool.hatch.metadata]
@@ -107,7 +107,7 @@ skip-string-normalization = true
 [tool.ruff]
 target-version = "py37"
 line-length = 120
-select = [
+lint.select = [
   "A",
   "ARG",
   "B",
@@ -134,7 +134,7 @@ select = [
   "W",
   "YTT",
 ]
-ignore = [
+lint.ignore = [
   # Allow non-abstract empty methods in abstract base classes
   "B027",
   # Allow boolean positional values in function calls, like `dict.get(... True)`
@@ -152,18 +152,18 @@ ignore = [
   # Ignore print statements
   "T201",
 ]
-unfixable = [
+lint.unfixable = [
   # Don't touch unused imports
   "F401",
 ]
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["rag_pipelines"]
 
-[tool.ruff.flake8-tidy-imports]
+[tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 # Tests can use magic values, assertions, and relative imports
 "tests/**/*" = ["PLR2004", "S101", "TID252"]
 
