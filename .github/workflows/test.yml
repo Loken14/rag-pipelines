@@ -43,5 +43,10 @@ jobs:
       if: matrix.python-version == '3.9' && runner.os == 'Linux'
       run: hatch run lint:all
 
-    - name: Run tests - llm_blender
+    - name: Run tests - llm_blender - Linux
+      if: runner.os == 'Linux'
+      run: hatch run test_llm_blender:cov
+    
+    - name: Run tests - llm_blender - MacOS
+      if: runner.os == 'macOS'
       run: hatch run test_llm_blender:cov

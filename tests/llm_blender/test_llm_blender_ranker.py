@@ -159,7 +159,7 @@ class TestLLMBlenderRanker:
 
         prompt_builder = PromptBuilder(template=prompt_template)
         generator = HuggingFaceLocalGenerator(
-            model_name_or_path="google/flan-t5-small",
+            model="google/flan-t5-small",
             task="text2text-generation",
             generation_kwargs={"max_new_tokens": 20, "temperature": 0.1, "do_sample": True, "num_return_sequences": 3},
         )
@@ -171,7 +171,7 @@ class TestLLMBlenderRanker:
 
         prompt_builder_2 = PromptBuilder(template=prompt_template)
         generator_2 = HuggingFaceLocalGenerator(
-            model_name_or_path="google/flan-t5-small",
+            model="google/flan-t5-small",
             task="text2text-generation",
             generation_kwargs={"max_new_tokens": 20, "temperature": 0.1, "do_sample": True, "num_return_sequences": 3},
         )
